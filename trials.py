@@ -69,34 +69,35 @@ def mutations(s):
 # 'hj'          'gfhd9532dm'    '4fbeu0mo' 
 
 guesses = [
-        ),
-    (20, 12, 5
-        frozenset(mutations(c2b('hjsrg00lgbif'))),
-        frozenset(mutations(c2b('hjsrg00lgbif4c6u07sq'))),
-        ),
-    (13,  8, 8
-        frozenset({struct.pack('>q', int('srg00lgbif', 32)),
-                   struct.pack('<q', int('srg00lgbif', 32)),
-                   }),
-        frozenset({struct.pack('>q', int('srg00lgbif', 32))
-                   + struct.pack('>q', int('4c6u07sq', 32))[3:],
-                   struct.pack('<q', int('srg00lgbif', 32))
-                   + struct.pack('<q', int('4c6u07sq', 32))[:-3],
-                   }),
-        ),
-    (12,  7, 8
-        frozenset({struct.pack('>q', int('srg00lgbif', 32))[1:],
-                   struct.pack('<q', int('srg00lgbif', 32))[:-1],
-                   }),
-        frozenset({struct.pack('>q', int('srg00lgbif', 32))[1:]
-                   + struct.pack('>q', int('4c6u07sq', 32))[3:],
-                   struct.pack('<q', int('srg00lgbif', 32))[:-1]
-                   + struct.pack('<q', int('4c6u07sq', 32))[:-3],
-                   }),
     (18, 10, 5,
         frozenset(mutations(c2b('gfhd9532dm'))),
         frozenset(mutations(c2b('gfhd9532dm4fbeu0mo'))),
         ),
+# Unlikely variations of how a chirp might be bit packed
+#    (20, 12, 5
+#        frozenset(mutations(c2b('hjsrg00lgbif'))),
+#        frozenset(mutations(c2b('hjsrg00lgbif4c6u07sq'))),
+#        ),
+#    (13,  8, 8
+#        frozenset({struct.pack('>q', int('srg00lgbif', 32)),
+#                   struct.pack('<q', int('srg00lgbif', 32)),
+#                   }),
+#        frozenset({struct.pack('>q', int('srg00lgbif', 32))
+#                   + struct.pack('>q', int('4c6u07sq', 32))[3:],
+#                   struct.pack('<q', int('srg00lgbif', 32))
+#                   + struct.pack('<q', int('4c6u07sq', 32))[:-3],
+#                   }),
+#        ),
+#    (12,  7, 8
+#        frozenset({struct.pack('>q', int('srg00lgbif', 32))[1:],
+#                   struct.pack('<q', int('srg00lgbif', 32))[:-1],
+#                   }),
+#        frozenset({struct.pack('>q', int('srg00lgbif', 32))[1:]
+#                   + struct.pack('>q', int('4c6u07sq', 32))[3:],
+#                   struct.pack('<q', int('srg00lgbif', 32))[:-1]
+#                   + struct.pack('<q', int('4c6u07sq', 32))[:-3],
+#                   }),
+#        ),
     ]
 
 def tryone((encoded_len, data_len, symbol_size, gfpoly, fcr, prim,
