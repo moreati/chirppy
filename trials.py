@@ -12,22 +12,46 @@ import reedsolomon
 # 5  5   2346 | 13  d   3719 | 21  l   5900 | 29  t   9360
 # 6  6   2485 | 14  e   3940 | 22  m   6250 | 30  u   9916
 # 7  7   2632 | 15  f   4174 | 23  n   6621 | 31  v  10505
+CHARS = '0123456789abcdefghijklmnopqrstuv'
+BYTES = ''.join(chr(i) for i in xrange(len(CHARS)))
 
-ints = range(32)
-bytes = ''.join(chr(i) for i in ints)
-chars = '0123456789abcdefghijklmnopqrstuv'
+_B2C = string.maketrans(BYTES, CHARS)
+_C2B = string.maketrans(CHARS, BYTES)
+_C2I = {c: i for i, c in enumerate(CHARS)}
 
 def b2c(s):
-    return string.translate(s, string.maketrans(bytes, chars))
+    r"""Convert a string of bytes containing symbol indexes to a
+    string of symbols.
+
+    >>> b2c('\x00\x01\x0a\x11')
+    '01ah'
+    """
+    return string.translate(s, _B2C)
 
 def c2b(s):
-    return string.translate(s, string.maketrans(chars, bytes))
+    r"""Convert a string of symbols to a string of bytes containing
+    symbol indexes.
+
+    >>> c2b('01ah')
+    '\x00\x01\n\x11'
+    """
+    return string.translate(s, _C2B)
 
 def i2c(s):
-    return ''.join(chars[i] for i in s)
+    r"""Convert an interable of symbol indexes to a string of symbols.
+
+    >>> i2c([0, 1, 10, 17])
+    '01ah'
+    """
+    return ''.join(CHARS[i] for i in s)
 
 def c2i(s):
-    return [chars.index(c) for c in s]
+    r"""Convert a string of symbols to an list of symbol indexes.
+
+    >>> i2c('01ah')
+    [0, 1, 10, 17]
+    """
+    return [_C2I[c] for c in s]
 
 def mutations(s):
     yield s
