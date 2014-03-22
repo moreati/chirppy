@@ -63,6 +63,10 @@ def mutations(s):
 # preamble (2)  data (10)       error correction (8)
 # 'hj'          'srg00lgbif'    '4c6u07sq'
 # 'hj'          '0b07407074'    '9lir5uo0'
+# 'hj'          'unvaufl1j3'
+# 'hj'          'mnac2dvevb'
+# 'hj'          '8ehqbur4bk'
+# 'hj'          'gfhd9532dm'    '4fbeu0mo' 
 
 guesses = [
     (18, 10, 5
