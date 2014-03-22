@@ -57,7 +57,7 @@ def chirp(symbols):
 
 def main():
     pygame.mixer.init(sample_rate, sample_size, channels)
-    chirp('hj' 'srg00lgbif' '4c6u07sq')
+    chirp('hj' 'gfhd9532dm' '4fbeu0mo')
 
 if __name__ == '__main__':
     main()

@@ -69,9 +69,6 @@ def mutations(s):
 # 'hj'          'gfhd9532dm'    '4fbeu0mo' 
 
 guesses = [
-    (18, 10, 5
-        frozenset(mutations(c2b('srg00lgbif'))),
-        frozenset(mutations(c2b('srg00lgbif4c6u07sq'))),
         ),
     (20, 12, 5
         frozenset(mutations(c2b('hjsrg00lgbif'))),
@@ -96,6 +93,9 @@ guesses = [
                    struct.pack('<q', int('srg00lgbif', 32))[:-1]
                    + struct.pack('<q', int('4c6u07sq', 32))[:-3],
                    }),
+    (18, 10, 5,
+        frozenset(mutations(c2b('gfhd9532dm'))),
+        frozenset(mutations(c2b('gfhd9532dm4fbeu0mo'))),
         ),
     ]
 
