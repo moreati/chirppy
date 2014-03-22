@@ -21,11 +21,16 @@ chirp_base_freq = 1760
 note_duration = 87.2e-3
 semitone = 2**(1/12.0)
 
-freq = chirp_base_freq
-chirp_freqs = {}
-for symbol in (chirp_symbols):
-    chirp_freqs[symbol] = freq
-    freq = int(freq * semitone)
+
+def _freqs(symbols, base_freq, multiplier):
+    freq = chirp_base_freq
+    result = {}
+    for symbol in symbols:
+        result[symbol] = freq
+        freq = int(freq * multiplier)
+    return result
+
+chirp_freqs = _freqs(chirp_symbols, chirp_base_freq, semitone)
 
 def sine_sound(freq, duration):
     """Return a `pygame.mixer.Sound` which will play a tone at `freq` Hz for
