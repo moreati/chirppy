@@ -1,6 +1,7 @@
 import itertools
 import string
 import struct
+import sys
 
 import reedsolomon
 
