@@ -94,17 +94,27 @@ guesses = [
         ),
     ]
 
-for gfpoly, fcr, prim in itertools.product(xrange(2**8), xrange(2**8), xrange(2**8)):
-    for encoded_len, data_len, symbol_size, candidates, expecteds in guesses:
-        try:
-            codec = reedsolomon.Codec(encoded_len, data_len, symbol_size,
-                                      gfpoly, fcr, prim)
-        except MemoryError:
-            continue
-        for candidate in candidates:
-            encoded = codec.encode(candidate)
-            if encoded in expecteds:
-                print "Found (%i, %i, %i) using %s, %s, gfpoly %i, fcr %i, prim %i" \
-                      % (encoded_len, data_len, symbol_size, candidate, encoded, gfpoly, fcr, prim)
-                      break
+def tryone((encoded_len, data_len, symbol_size, gfpoly, fcr, prim,
+           candidates, expecteds)):
+    try:
+        codec = reedsolomon.Codec(encoded_len, data_len, symbol_size,
+                                  gfpoly, fcr, prim)
+    except MemoryError, e:
+        return
+    for candidate in candidates:
+        encoded = codec.encode(candidate)
+        if encoded in expecteds:
+            print "Found (%i, %i, %i) using %s, %s, gfpoly %i, fcr %i, prim %i" \
+                  % (encoded_len, data_len, symbol_size, candidate, encoded, gfpoly, fcr, prim)
+            return
+
+if __name__ == '__main__':
+    # Valid ranges for fcr/prim ranges found experimentally
+    inputs = (encoded_len, data_len, symbol_size, gfpoly, fcr, prim,
+              candidates, expecteds
+              for gfpoly, fcr, prim in itertools.product(xrange(1, 2**20, 2), xrange(1, 32), xrange(1, 32))
+              for encoded_len, data_len, symbol_size, candidates, expecteds in guesses
+              )
+    for t in inputs:
+        tryone(t)
 
