@@ -116,8 +116,8 @@ def tryone((encoded_len, data_len, symbol_size, gfpoly, fcr, prim,
 
 if __name__ == '__main__':
     # Valid ranges for fcr/prim ranges found experimentally
-    inputs = (encoded_len, data_len, symbol_size, gfpoly, fcr, prim,
-              candidates, expecteds
+    inputs = ((encoded_len, data_len, symbol_size, gfpoly, fcr, prim,
+              candidates, expecteds)
               for gfpoly, fcr, prim in itertools.product(xrange(1, 2**20, 2), xrange(1, 32), xrange(1, 32))
               for encoded_len, data_len, symbol_size, candidates, expecteds in guesses
               )
