@@ -67,6 +67,7 @@ def mutations(s):
 # 'hj'          'mnac2dvevb'
 # 'hj'          '8ehqbur4bk'
 # 'hj'          'gfhd9532dm'    '4fbeu0mo' 
+# 'hj'          'ovkp99793i'    'ao89q5ku'
 
 guesses = [
     (18, 10, 5,
