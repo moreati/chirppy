@@ -41,13 +41,13 @@ disp("Actuals")
 prim_polys = primpoly(sym_sz, "all", "nodisplay");
 
 for prim_poly = prim_polys
-    for fcr = 1:1024
+    # A chirp as a Galois Field, of length msg_len
+    msg = gf(s2i("gfhd9532dm"), sym_sz, prim_poly);
+
+    for fcr = 1:10240
         for prim_elem = 1:1024
             gen_poly = rsgenpoly(enc_len, msg_len, prim_poly,
                                  fcr, prim_elem);
-
-            # A chirp as a Galois Field, of length msg_len
-            msg = gf(s2i("gfhd9532dm"), sym_sz, prim_poly);
 
             # A complete chirp, with parity symbols, of length enc_len
             code = rsenc(msg, enc_len, msg_len, gen_poly);
