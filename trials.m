@@ -5,7 +5,7 @@ msg_len = 10;       # k Message length, excluding parity symbols
 sym_sz =   5;       # m bits/symbol
 
 function retval = s2i(s)
-    # Given a string where each characte represents an integer in
+    # Given a string where each character represents an integer in
     # base 32 return a vector of integers
     # e.g. "0123abcdmnopv" -> [0 1 2 3 10 11 12 13 22 23 24 25 31]
     ints = int32(s);
@@ -34,6 +34,7 @@ function retval = i2s(ints)
 endfunction
 
 expected = s2i(["gfhd9532dm" "4fbeu0mo"]);
+
 disp("Expected"), disp(expected)
 
 disp("Actuals")
