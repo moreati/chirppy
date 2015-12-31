@@ -25,7 +25,7 @@ def _freqs(alphabet, base_freq, multiplier):
 
 freq_table = _freqs('0123456789abcdefghijklmnopqrstuv', 1760, 2**(1/12.0))
 
-
+#         2           10          8
 chirp = 'hj' 'gfhd9532dm' '4fbeu0mo'
 freqs = [freq_table[symbol] for symbol in chirp]
 
